@@ -1,29 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <h1>BRAINROTUBE</h1>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AluraFlix</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #121317;
+      --text: #e8e8ea;
+      --muted: #b8b8be;
+      --accent: #7aa2f7;
+      --ring: rgba(122,162,247,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(122,162,247,.09), transparent 60%),
+                  radial-gradient(800px 600px at -10% 10%, rgba(137,220,235,.08), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(11,12,16,.9), rgba(11,12,16,.65));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .3px; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #89dceb);
+      box-shadow: 0 4px 14px rgba(122,162,247,.35);
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.02); font-size: 13px; color: var(--muted);
+    }
+
+    main { padding: 28px 20px 56px; }
+    .grid {
+      display: grid; gap: 20px; grid-template-columns: repeat(12, 1fr);
+    }
+    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(8, 1fr); } }
+    @media (max-width: 720px)  { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .card {
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      overflow: clip;
+      box-shadow: 0 20px 40px rgba(0,0,0,.35);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--ring); box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+
+    .video-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #0c0d12; }
+    .video-wrap iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+    }
+
+    .video-thumb { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+
+    .meta { padding: 14px 16px 16px; display: grid; gap: 6px; }
+    .title { font-size: 16px; font-weight: 700; line-height: 1.35; }
+    .subtitle { font-size: 13px; color: var(--muted); }
+  </style>
 </head>
 <body>
-    <header>
-        <main>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/toYzvjkUdYI?si=V7DF5REbO8We2Pim" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>AluraFlix</span>
+      </div>
+      <span class="pill">8 vídeos</span>
+    </div>
+  </header>
 
-            </iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/SIeeDcnu9Ck?si=zw_1BCnCGr4ireGS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                
-            </iframe>
-        </main>
+  <main class="container">
+    <div class="grid">
+      <!-- Iframe Video 1 -->
+      <article class="card">
+        <div class="video-wrap">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/oYRWAfh1wSA?si=2lFfy7BvOFpgXZfT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="meta">
+          <div class="title">Vídeo com iframe 1</div>
+        </div>
+      </article>
 
+      <!-- Iframe Video 2 -->
+      <article class="card">
+        <div class="video-wrap">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/IrqVZuO6v1E?si=kPI9lucDXKaTfOPy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="meta">
+          <div class="title">Vídeo com iframe 2</div>
+        </div>
+      </article>
 
-        </main>
-<footer>
+      <!-- Video 3 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=qEChvydiGsY" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/qEChvydiGsY/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCfO-Cj5DJlOt0Vlp3yqYHjI6sESQ" alt="Video 3" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 3</div>
+        </div>
+      </article>
 
-</footer>
+      <!-- Video 4 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=L82w5WRx6vw" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/L82w5WRx6vw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLC7kk96r67IO0Amo4VpOrv5GOLrdA" alt="Video 4" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 4</div>
+        </div>
+      </article>
 
-    </header>
-    
+      <!-- Video 5 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=6vpuNsrpuz4" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/6vpuNsrpuz4/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB0PsAGY87AEGc2Gy_AltlaxRQlZA" alt="Video 5" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 5</div>
+        </div>
+      </article>
+
+      <!-- Video 6 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=OeWxxTLdRBw" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/OeWxxTLdRBw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB5KxZYSrtESiZhOWsKpEtWSGRY5A" alt="Video 6" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 6</div>
+        </div>
+      </article>
+
+      <!-- Video 7 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=OrvxyaUN90Y" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/OrvxyaUN90Y/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDmxtJ5LeMSPh68k07n3B8CFnr2Vw" alt="Video 7" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 7</div>
+        </div>
+      </article>
+
+      <!-- Video 8 -->
+      <article class="card">
+        <a href="https://www.youtube.com/watch?v=W8dWDjwkMDw" target="_blank">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/W8dWDjwkMDw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBTTmsD4xQ8WBtD4GCmY1f32Gdk7g" alt="Video 8" />
+        </a>
+        <div class="meta">
+          <div class="title">Vídeo 8</div>
+        </div>
+      </article>
+    </div>
+  </main>
 </body>
 </html>
